@@ -13,17 +13,25 @@ import child_C
 public struct UmbrellaFrameworkEntryPointView: View {
     public init() {}
     public var body: some View {
-        Rectangle().fill(.gray)
-            .overlay {
-                VStack{
-                    Text("Welcome to Umbrella Framework")
-                    HStack {
-                        ChildAEntryPointView()
-                        ChildBEntryPointView()
-                        ChildCEntryPointView()
+        NavigationView {
+            Rectangle().fill(.gray)
+                .overlay {
+                    VStack(spacing: 20) {
+                        Text("Welcome to Umbrella Framework")
+                        HStack(spacing: 80) {
+                            NavigationLink(destination: ChildAEntryPointView()) {
+                                Text("Child A")
+                            }
+                            NavigationLink(destination: ChildBEntryPointView()) {
+                                Text("Child B")
+                            }
+                            NavigationLink(destination: ChildCEntryPointView()) {
+                                Text("Child C")
+                            }
+                        }
                     }
-                }
-            }
+                }.navigationTitle("Umbrella Framework")
+        }
     }
 }
 
